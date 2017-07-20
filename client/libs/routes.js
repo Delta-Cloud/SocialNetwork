@@ -43,3 +43,13 @@ userRoutes.route('/dashboard', {
         });
     }
 });
+
+userRoutes.route('/findUsers', {
+    name: 'findUsers',
+    action() {
+        BlazeLayout.render('mainLayout', {
+            navigation: 'userNav',
+            content: 'findUsers'
+        });
+    }
+});
