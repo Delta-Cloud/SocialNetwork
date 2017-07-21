@@ -6,6 +6,33 @@
 			{{#EasySearch.Each index=usersIndex}}
 				<li class="list-group-item">
 					{{profile.fullName}}
+					{{#if checkRelationshipStatus "requestSent" __originalId}}
+						<button class="btn btn-danger btn-xs pull-right"
+						        data-action="cancelFriendRequest" title="Cancel friend request">
+							<i class="fa fa-times-circle"></i>
+						</button>
+					{{else}}
+						{{#if checkRelationshipStatus "requestReceived" __originalId}}
+							<div class="pull-right">
+								<button class="btn btn-danger btn-xs"
+								        data-action="rejectRequest" title="Reject friend request">
+									<i class="fa fa-times-circle"></i>
+								</button>
+								<button class="btn btn-primary btn-xs"
+								        data-action="confirmFriendship" title="Confirm friendship">
+									<i class="fa fa-arrows-v"></i>
+								</button>
+							</div>
+							<span>Confirm request button</span>
+						{{else}}
+							<button type="button"
+							        class="btn btn-primary btn-xs pull-right"
+							        data-action="requestFriendship"
+							        title="Request Friendship">
+								<i class="fa fa-user-plus"></i>
+							</button>
+						{{/if}}
+					{{/if}}
 				</li>
 			{{/EasySearch.Each}}
 			{{#EasySearch.IfNoResults index=usersIndex}}
