@@ -30,6 +30,8 @@ Template.findUsers.events({
     },
     'click button[data-action="confirmFriendship"]'() {
         Meteor.call('requests.confirm', this.__originalId, this.profile.fullName);
+    },
+    'click button[data-action="cancelFriendship"]'() {
+        Meteor.call('friendships.cancel', this.__originalId, this.profile.fullName);
     }
-
 });

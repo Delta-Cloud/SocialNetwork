@@ -8,5 +8,12 @@ Meteor.methods({
         }
         check(status, String);
         Statuses.insert({ status });
+    },
+    'statuses.remove': function (id) {
+        if(!this.userId) {
+            throw new Meteor.Error(401, 'You must be logged in');
+        }
+        check(id, String);
+        Statuses.remove({_id: id, owner: this.userId});
     }
-})
+});

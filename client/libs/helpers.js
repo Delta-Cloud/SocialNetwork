@@ -12,6 +12,8 @@ Template.registerHelper('checkRelationshipStatus', (type, id) => {
             return !!Requests.findOne({requesterId: Meteor.userId(), targetId: id});
         case 'requestReceived':
             return !!Requests.findOne({requesterId: id, targetId: Meteor.userId()});
+        case 'alreadyFriends':
+            return !!Friendships.findOne({friendship: { $in: [id]}});
         default:
             console.log("Something went wrong");
             break;

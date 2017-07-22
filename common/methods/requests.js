@@ -36,7 +36,7 @@ Meteor.methods({
         check(fullName, String);
         Requests.remove({requesterId: id, targetId: this.userId});
         Friendships.insert({
-            friendName1: Meteor.user().fullName,
+            friendName1: Meteor.user().profile.fullName,
             friendName2: fullName,
             friendship: [this.userId, id]
         });
