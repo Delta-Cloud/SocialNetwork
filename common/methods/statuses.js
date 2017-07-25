@@ -15,5 +15,6 @@ Meteor.methods({
         }
         check(id, String);
         Statuses.remove({_id: id, owner: this.userId});
+        Likes.remove({statusId: id});
     }
 });

@@ -11,6 +11,20 @@
 								        data-action="removeStatus" title="Remove status" >
 									<i class="fa fa-minus"></i>
 								</button>
+							{{else}}
+								<div class="pull-right">
+									{{#if hasLikedStatus _id}}
+										<button type="button" class="btn btn-danger btn-xs pull-right"
+										        data-action="dislikeStatus" title="Dislike status" >
+											<i class="fa fa-thumbs-down"></i>
+										</button>
+									{{else}}
+										<button type="button" class="btn btn-success btn-xs pull-right"
+									        data-action="likeStatus" title="Like status" >
+											<i class="fa fa-thumbs-up"></i>
+										</button>
+									{{/if}}
+								</div>
 							{{/if}}
 							<p>
 								<strong>{{firstName}}</strong> posted on
@@ -19,6 +33,14 @@
 							<p>
 								{{status}}
 							</p>
+							{{#if statusHasLikes}}
+								<p class="text-success">
+										{{likesData.howMany}} {{likesData.notation}} this Status:
+										{{#each likesData.people}}
+											<span>{{firstName}}</span>
+										{{/each}}
+									</p>
+							{{/if}}
 						</div>
 					</div>
 				</div>
